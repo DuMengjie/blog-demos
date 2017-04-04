@@ -1,0 +1,122 @@
+<!--
+Copyright 2017 Google Inc. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Paul Lewis" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0">
+  <title>Menu Clip</title>
+  <style>
+    html, body {
+      background: #666;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .menu {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+      transform-origin: top left;
+      overflow: hidden;
+      border-radius: 3px;
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+      background: #FFF;
+      will-change: transform;
+    }
+
+    .menu__contents {
+      transform-origin: top left;
+      will-change: transform;
+    }
+
+    .menu__toggle {
+      text-align: left;
+      padding: 0;
+      margin: 0;
+      border: none;
+      background: none;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .menu__title {
+      padding: 0;
+      margin: 0;
+      font-weight: 500;
+      display: inline-block;
+      padding: 8px 12px;
+    }
+
+    .menu__items {
+      position: relative;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      background: #FFF;
+      z-index: 1;
+    }
+
+    .menu__item {
+      padding: 8px 12px;
+      border-top: 1px solid #DDD;
+    }
+
+    .menu--active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .menu--expanded {
+      animation-name: menuExpandAnimation;
+      animation-duration: 0.2s;
+      animation-timing-function: linear;
+    }
+
+    .menu__contents--expanded {
+      animation-name: menuExpandContentsAnimation;
+      animation-duration: 0.2s;
+      animation-timing-function: linear;
+    }
+
+    .menu--collapsed {
+      animation-name: menuCollapseAnimation;
+      animation-duration: 0.2s;
+      animation-timing-function: linear;
+    }
+
+    .menu__contents--collapsed {
+      animation-name: menuCollapseContentsAnimation;
+      animation-duration: 0.2s;
+      animation-timing-function: linear;
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="menu js-menu">
+    <div class="menu__contents js-menu-contents">
+      <button class="menu__toggle js-menu-toggle">
+        <h1 class="menu__title js-menu-title">Menu</h1>
+      </button>
+      <ul class="menu__items">
+        <li class="menu__item">Menu item 1</li>
+        <li class="menu__item">Menu item 2</li>
+        <li class="menu__item">Menu item 3</li>
+        <li class="menu__item">Menu item 4</li>
+      </ul>
+    </div>
+  </nav>
+
+  <script src="menu.js"></script>
+</body>
+</html>
