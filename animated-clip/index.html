@@ -7,6 +7,10 @@
 	<title>Menu Clip</title>
 	<link rel="stylesheet" href="style.css">
 	<style>
+		* {
+			box-sizing: border-box;
+		}
+
 		html, body {
 		  background: #666;
 		  font-family: Arial, Helvetica, sans-serif;
@@ -120,6 +124,127 @@
 		  animation-duration: 0.2s;
 		  animation-timing-function: linear;
 		}
+
+		.expando {
+		  border-radius: 2px;
+		  overflow: hidden;
+		  position: fixed;
+		  top: 20px;
+		  left: 20px;
+		  will-change: transform;
+		}
+
+		.expando__inner {
+		  top: 10px;
+		  left: 10px;
+		  border-radius: 50%;
+		  overflow: hidden;
+		  background: #FFF;
+		  position: absolute;
+		  will-change: transform;
+		}
+
+		.expando__inner-inverter {
+		  will-change: transform;
+		}
+
+		.expando__btn {
+		  width: 48px;
+		  height: 48px;
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  background: none;
+		  border: none;
+		  outline: none;
+		  pointer-events: auto;
+		  cursor: pointer;
+		  will-change: transform;
+		  transition:
+		      transform 0.1s cubic-bezier(0, 0, 0.31, 1),
+		      opacity 0.2s cubic-bezier(0, 0, 0.31, 1);
+		}
+
+		.expando__content {
+		  position: absolute;
+		  left: -10px;
+		  top: -10px;
+		  pointer-events: none;
+		  opacity: 0;
+		  will-change: transform;
+		  transform: translateY(20px);
+		  transition:
+		      transform 0.3s cubic-bezier(0, 0, 0.31, 1),
+		      opacity 0.3s cubic-bezier(0, 0, 0.31, 1);
+		}
+
+		.expando__close {
+		  position: absolute;
+		  right: 10px;
+		  top: 10px;
+		  outline: none;
+		  border: none;
+		  background: none;
+		  cursor: pointer;
+		}
+
+		.expando__content-list {
+		  width: 140px;
+		  margin: 0;
+		  padding: 30px 0 20px 0;
+		  list-style: none;
+		  overflow: hidden;
+		}
+
+		li {
+		  line-height: 1.9;
+		  padding: 0 20px;
+		}
+
+		li:hover {
+		  background: #555;
+		  color: #FFF;
+		}
+
+		.item--expanded {
+		  animation-name: expandAnimation;
+		  animation-duration: 0.7s;
+		  animation-timing-function: linear;
+		  animation-fill-mode: forwards;
+		}
+
+		.item__contents--expanded {
+		  animation-name: expandContentsAnimation;
+		  animation-duration: 0.7s;
+		  animation-timing-function: linear;
+		  animation-fill-mode: forwards;
+		}
+
+		.item--collapsed {
+		  animation-name: collapseAnimation;
+		  animation-duration: 0.2s;
+		  animation-timing-function: linear;
+		  animation-fill-mode: forwards;
+		}
+
+		.item__contents--collapsed {
+		  animation-name: collapseContentsAnimation;
+		  animation-duration: 0.2s;
+		  animation-timing-function: linear;
+		  animation-fill-mode: forwards;
+		}
+
+		.item__contents--expanded .expando__content {
+		  transform: translateY(0px);
+		  opacity: 1;
+		  pointer-events: auto;
+		}
+
+		.item__contents--expanded .expando__btn {
+		  transform: rotate(180deg);
+		  opacity: 0;
+		  pointer-events: none;
+		}
 	</style>
 </head>
 <body>
@@ -164,6 +289,30 @@
 	    </ul>
 	  </div>
 	</nav>
+
+	<div class="expando js-expando">
+	  <div class="expando__inner js-expando-inner">
+	    <div class="expando__inner-inverter js-expando-inner-inverter">
+	      <div class="expando__content js-content">
+	        <ul class="expando__content-list">
+	          <li>One</li>
+	          <li>Two</li>
+	          <li>Three</li>
+	          <li>Four</li>
+	        </ul>
+
+	        <button class="expando__close js-expando-collapse-btn">Close</button>
+	      </div>
+
+	      <button class="expando__btn js-expando-expand-btn">
+	        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+	          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+	          <path d="M0 0h24v24H0z" fill="none"/>
+	        </svg>
+	      </button>
+	    </div>
+	  </div>
+	</div>
 
 	<script src="main.js"></script>
 </body>
