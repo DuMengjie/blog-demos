@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0">
+	<title>Parallax</title>
+	<link rel="stylesheet" href="style.css">
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		html, body {
+			font-family: Arial, Helvetica, sans-serif;
+			padding: 0;
+			margin: 0;
+		}
+
+		.parallax {
+			perspective: 1px;
+			height: 100vh;
+			overflow-x: hidden;
+			overflow-y: auto;
+		}
+		.parallax__layer {
+			margin: 100vh 0;
+			text-align: center;
+			/* background-color: rgb(102,204,102); */
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+		}
+		.parallax__layer--base {
+			background-color: #f00; 
+			transform: translateZ(0);
+		}
+		.parallax__layer--back {
+			background-color: #0f0;
+			transform: translateZ(-1px) scale(2);
+		}
+
+		.container {
+			height: 100vh;
+			overflow-x: hidden;
+			overflow-y: auto;
+			perspective: 1px;
+			perspective-origin: 0 0;
+		}
+		.parallax-child {
+			text-align: center;
+			padding: 40vh;
+			transform-origin: 0 0;
+			transform: translateZ(-2px) scale(3);
+		}
+		.parallax-child:last-child {
+			transform: translateZ(0);
+		}
+		.parallax-child:first-child {
+			background-color: rgb(102,204,102);
+		}
+		.parallax-container {
+			/* transform-style: preserve-3d; */
+		}
+	</style>
+</head>
+<body>
+	<!-- <div class="parallax">
+  <div class="parallax__layer parallax__layer--back">
+		<h1>Parallax Background</h1>	
+    <h1>Parallax Background</h1>	
+    <h1>Parallax Background</h1>	
+    <h1>Parallax Background</h1>	
+    <h1>Parallax Background</h1>	
+    <h1>Parallax Background</h1>	
+    <h1>Parallax Background</h1>	
+    <h1>Parallax Background</h1>	
+    <h1>Parallax Background</h1>	
+  </div>
+  <div class="parallax__layer parallax__layer--base">
+    <h1>Parallax Child</h1>	
+    <h1>Parallax Child</h1>	
+    <h1>Parallax Child</h1>	
+    <h1>Parallax Child</h1>	
+    <h1>Parallax Child</h1>	
+    <h1>Parallax Child</h1>	
+    <h1>Parallax Child</h1>	
+    <h1>Parallax Child</h1>	
+		<h1>Parallax Child</h1>
+  </div>
+</div> -->
+	<div class="container">
+		<div class="parallax-container">
+			<div class="parallax-child">
+				<h1>Parallax Background</h1>	
+				<h1>Parallax Background</h1>	
+				<h1>Parallax Background</h1>	
+				<h1>Parallax Background</h1>	
+				<h1>Parallax Background</h1>	
+				<h1>Parallax Background</h1>	
+				<h1>Parallax Background</h1>	
+				<h1>Parallax Background</h1>	
+				<h1>Parallax Background</h1>
+			</div>
+			<div class="parallax-child">
+				<h1>Parallax Child</h1>	
+				<h1>Parallax Child</h1>	
+				<h1>Parallax Child</h1>	
+				<h1>Parallax Child</h1>	
+				<h1>Parallax Child</h1>	
+				<h1>Parallax Child</h1>	
+				<h1>Parallax Child</h1>	
+				<h1>Parallax Child</h1>	
+				<h1>Parallax Child</h1>
+			</div>
+		</div>
+	</div>
+	<script src="main.js"></script>
+</body>
+</html>
